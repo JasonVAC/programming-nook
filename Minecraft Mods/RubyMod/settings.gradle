@@ -1,0 +1,16 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+        maven {
+            name = 'NeoForged'
+            url = 'https://maven.neoforged.net/releases/'
+        }
+        maven {
+            name = 'BMCLAPI2'
+            url = 'https://bmclapi2.bangbang93.com/maven/'
+        }
+    }
+}
+
+rootProject.name = 'RubyMod'

@@ -1,0 +1,15 @@
+modLoader="javafml"
+loaderVersion="[4,)"
+license="MIT"
+
+[[mods]]
+modId="oldcombat"
+version="1.0.0"
+displayName="Old Combat"
+logoFile=""
+credits="Clawy"
+authors="Clawy"
+description='''
+Brings back 1.8 combat mechanics: instant attack with no cooldown.
+Server-side only - no client install needed!
+'''

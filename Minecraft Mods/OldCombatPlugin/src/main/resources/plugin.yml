@@ -1,0 +1,7 @@
+name: OldCombat
+version: '1.0.0'
+main: com.oldcombat.OldCombatPlugin
+api-version: '1.21'
+author: Clawy
+description: Brings back 1.8 combat mechanics - instant attacks on Paper/Leaves servers
+folia-supported: true

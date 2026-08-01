@@ -1,0 +1,15 @@
+# OldCombat Plugin Configuration
+# Brings back 1.8 combat mechanics
+
+combat:
+  # Remove attack cooldown (instant attacks like 1.8)
+  enableInstantAttack: true
+
+  # Attack speed value (1000 = no cooldown)
+  attackSpeed: 1000.0
+
+  # Player attack reach in blocks
+  attackReach: 4.5
+
+  # Damage multiplier (1.0 = normal)
+  damageMultiplier: 1.0

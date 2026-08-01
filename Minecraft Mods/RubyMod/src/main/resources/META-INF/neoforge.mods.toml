@@ -1,0 +1,15 @@
+modLoader="javafml"
+loaderVersion="[4,)"
+license="MIT"
+issueTrackerURL=""
+
+[[mods]]
+modId="rubyblock"
+version="1.0.0"
+displayName="Ruby Block Mod"
+logoFile=""
+credits="Clawy"
+authors="Clawy"
+description='''
+A mod that adds Ruby blocks to Minecraft!
+'''
