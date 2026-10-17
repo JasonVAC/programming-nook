@@ -1,0 +1,328 @@
+#!/bin/bash
+# Comprehensive man page translator for batch m-r processing
+set -e
+
+INPUT="$1"
+OUTPUT="$2"
+
+sed -E \
+-e 's/^\.TH (.+) "1" (.+) "(.+)" "User Commands"$/.TH \1 "1" \2 "\3" "用户命令"/' \
+-e 's/^\.TH (.+) 1 (.+) "(.+)" "User Commands"$/.TH \1 1 \2 "\3" "用户命令"/' \
+-e 's/^\.SH NAME$/.SH 名称/' \
+-e 's/^\.SH "NAME"$/.SH "名称"/' \
+-e 's/^\.SH SYNOPSIS$/.SH 概述/' \
+-e 's/^\.SH "SYNOPSIS"$/.SH "概述"/' \
+-e 's/^\.SH DESCRIPTION$/.SH 描述/' \
+-e 's/^\.SH "DESCRIPTION"$/.SH "描述"/' \
+-e 's/^\.SH OPTIONS$/.SH 选项/' \
+-e 's/^\.SH "OPTIONS"$/.SH "选项"/' \
+-e 's/^\.SH EXAMPLES$/.SH 示例/' \
+-e 's/^\.SH "EXAMPLES"$/.SH "示例"/' \
+-e 's/^\.SH "EXAMPLE"$/.SH "示例"/' \
+-e 's/^\.SH EXAMPLE$/.SH 示例/' \
+-e 's/^\.SH "EXIT STATUS"$/.SH "退出状态"/' \
+-e 's/^\.SH EXIT STATUS$/.SH 退出状态/' \
+-e 's/^\.SH "EXIT CODES"$/.SH "退出状态"/' \
+-e 's/^\.SH "EXIT CODE"$/.SH "退出状态"/' \
+-e 's/^\.SH "RETURN VALUE"$/.SH "返回值"/' \
+-e 's/^\.SH RETURN VALUE$/.SH 返回值/' \
+-e 's/^\.SH "SEE ALSO"$/.SH "参见"/' \
+-e 's/^\.SH SEE ALSO$/.SH 参见/' \
+-e 's/^\.SH "FILES"$/.SH "文件"/' \
+-e 's/^\.SH FILES$/.SH 文件/' \
+-e 's/^\.SH "ENVIRONMENT"$/.SH "环境变量"/' \
+-e 's/^\.SH ENVIRONMENT$/.SH 环境变量/' \
+-e 's/^\.SH "BUGS"$/.SH "错误"/' \
+-e 's/^\.SH BUGS$/.SH 错误/' \
+-e 's/^\.SH "AUTHOR"$/.SH "作者"/' \
+-e 's/^\.SH AUTHOR$/.SH 作者/' \
+-e 's/^\.SH "AUTHORS"$/.SH "作者"/' \
+-e 's/^\.SH AUTHORS$/.SH 作者/' \
+-e 's/^\.SH "COPYRIGHT"$/.SH "版权"/' \
+-e 's/^\.SH COPYRIGHT$/.SH 版权/' \
+-e 's/^\.SH "NOTES"$/.SH "注释"/' \
+-e 's/^\.SH NOTES$/.SH 注释/' \
+-e 's/^\.SH "REPORTING BUGS"$/.SH "报告错误"/' \
+-e 's/^\.SH REPORTING BUGS$/.SH 报告错误/' \
+-e 's/^\.SH "DIAGNOSTICS"$/.SH "诊断"/' \
+-e 's/^\.SH DIAGNOSTICS$/.SH 诊断/' \
+-e 's/^\.SH "HISTORY"$/.SH "历史"/' \
+-e 's/^\.SH HISTORY$/.SH 历史/' \
+-e 's/^\.SH "CONFIGURATION"$/.SH "配置"/' \
+-e 's/^\.SH USAGE$/.SH 用法/' \
+-e 's/^\.SH "USAGE"$/.SH "用法"/' \
+-e 's/^\.SH OVERVIEW$/.SH 概述/' \
+-e 's/^\.SH "OVERVIEW"$/.SH "概述"/' \
+-e 's/^\.SH "DEPENDENCIES"$/.SH "依赖"/' \
+-e 's/^\.SH CAVEATS$/.SH 注意事项/' \
+-e 's/^\.SH "CAVEATS"$/.SH "注意事项"/' \
+-e 's/^\.SH "SECURITY"$/.SH "安全"/' \
+-e 's/^\.SH "STANDARDS"$/.SH "标准"/' \
+-e 's/^\.SH "TROUBLESHOOTING"$/.SH "故障排除"/' \
+-e 's/^\.SH "GENERAL OPTIONS"$/.SH "通用选项"/' \
+-e 's/^\.SH SETUP$/.SH 设置/' \
+-e 's/^\.SH "SETUP"$/.SH "设置"/' \
+-e 's/^\.SH "ALTERNATIVE MODES"$/.SH "替代模式"/' \
+-e 's/^\.SH CONFIG$/.SH 配置/' \
+-e 's/^\.SH "CONFIG"$/.SH "配置"/' \
+-e 's/^\.SH ABOUT$/.SH 关于/' \
+-e 's/^\.SH "ABOUT"$/.SH "关于"/' \
+-e 's/^\.SH "INSTALLATION"$/.SH "安装"/' \
+-e 's/^\.SH "REQUIREMENTS"$/.SH "要求"/' \
+-e 's/^\.SH "LIMITATIONS"$/.SH "限制"/' \
+-e 's/^\.SH "AVAILABILITY"$/.SH "可用性"/' \
+-e 's/^\.SH "COMPATIBILITY"$/.SH "兼容性"/' \
+-e 's/^\.SH "SIGNALS"$/.SH "信号"/' \
+-e 's/^\.SH "ERRORS"$/.SH "错误"/' \
+-e 's/^\.SH "WARNING"$/.SH "警告"/' \
+-e 's/^\.SH "RESOURCES"$/.SH "资源"/' \
+-e 's/display this help and exit/显示此帮助信息并退出/g' \
+-e 's/output version information and exit/输出版本信息并退出/g' \
+-e 's/Mandatory arguments to long options are mandatory for short options too\./长选项的必选参数对短选项也必选。/g' \
+-e 's/Mandatory or optional arguments to long options are mandatory or optional for short options too\./长选项的必选或可选参数对短选项也相应地必选或可选。/g' \
+-e 's/Report bugs to/错误报告请发送至/g' \
+-e 's/Written by/由/g' \
+-e 's/General help using GNU software/GNU 软件的一般帮助/g' \
+-e 's/This is free software: you are free to change and redistribute it\./这是自由软件：您可以自由修改和重新发布它。/g' \
+-e 's/There is NO WARRANTY, to the extent permitted by law\./在法律允许的范围内，不提供任何担保。/g' \
+-e 's/The full documentation for/完整文档请参见/g' \
+-e 's/is maintained as a Texinfo manual/以 Texinfo 手册的形式维护/g' \
+-e 's/should give you access to the complete manual\./可以访问完整的手册。/g' \
+-e 's/programs are properly installed at your site/程序已正确安装在您的系统上/g' \
+-e 's/Exit status is 0 for success/退出状态 0 表示成功/g' \
+-e 's/If no FILE or if FILE is/如果没有指定 FILE，或者 FILE 为/g' \
+-e 's/standard input is read\./则读取标准输入。/g' \
+-e 's/standard input/标准输入/g' \
+-e 's/standard output/标准输出/g' \
+-e 's/standard error/标准错误/g' \
+-e 's/by default/默认情况下/g' \
+-e 's/Default:/默认值：/g' \
+-e 's/Process macros in FILEs\./处理 FILE 中的宏。/g' \
+-e 's/for more information/获取更多信息/g' \
+-e 's/for short options too/对短选项也适用/g' \
+-e 's/displays copious debugging information/显示大量调试信息/g' \
+-e 's/print program options/打印程序选项/g' \
+-e 's/format of debugging information/调试信息的格式/g' \
+-e 's/print a list of supported option arguments/打印支持的选项参数列表/g' \
+-e 's/print version information/打印版本信息/g' \
+-e 's/License GPLv3+/许可证 GPLv3+/g' \
+-e 's/GNU General Public License v3\.0 or later/GNU 通用公共许可证 v3\.0 或更高版本/g' \
+-e 's/If defined, the environment variable/如果设置了环境变量/g' \
+-e 's/colon-separated list/冒号分隔的列表/g' \
+-e 's/suppress some warnings for builtins/抑制内置函数的一些警告/g' \
+-e 's/force a.*prefix to all builtins/强制所有内置函数添加/g' \
+-e 's/display detailed information about the image/显示图像的详细信息/g' \
+-e 's/print detailed information about the image/打印图像的详细信息/g' \
+-e 's/For more information about/有关更多信息，请参阅/g' \
+-e 's/point your browser to/请浏览/g' \
+-e 's/Enable MangoHud on any application/为任何应用程序启用 MangoHud/g' \
+-e 's/is a Vulkan\/OpenGL overlay for monitoring FPS/是一个用于监控 FPS 的 Vulkan\/OpenGL 覆盖层/g' \
+-e 's/convert between image formats as well as resize an image/在图像格式之间转换，以及调整图像大小/g' \
+-e 's/suppress all warning messages/抑制所有警告消息/g' \
+-e 's/is a member of the/是/g' \
+-e 's/suite of tools/工具套件/g' \
+-e 's/Use it to/使用它来/g' \
+-e 's/and much more/等等/g' \
+-e 's/Image Settings:/图像设置：/g' \
+-e 's/Image Operators:/图像操作：/g' \
+-e 's/Image Channel Operators:/图像通道操作：/g' \
+-e 's/Image Sequence Operators:/图像序列操作：/g' \
+-e 's/Image Stack Operators:/图像堆栈操作：/g' \
+-e 's/Miscellaneous Options:/其他选项：/g' \
+-e 's/Use any setting or operator as an/可以将任何设置或操作作为/g' \
+-e 's/Only a limited number of setting are/只有少数设置可以作为/g' \
+-e 's/They include:/包括：/g' \
+-e 's/as well as any of the miscellaneous options/以及任何其他选项/g' \
+-e 's/By default, the image format of.*is determined by its magic number/默认情况下，文件的图像格式由其魔数决定/g' \
+-e 's/To specify a particular image format/要指定特定的图像格式/g' \
+-e 's/precede the filename with an image format name and a colon/在文件名前加上图像格式名称和冒号/g' \
+-e 's/or specify the image type as the filename suffix/或将图像类型指定为文件名后缀/g' \
+-e 's/for standard input or output/表示标准输入或输出/g' \
+-e 's/Here is an example script/下面是一个示例脚本/g' \
+-e 's/is a script to ease the work of maintaining multiple similar/是一个用于简化维护多个相似/g' \
+-e 's/macro processor/宏处理器/g' \
+-e 's/once: warnings become errors, twice: stop execution at first error/一次：警告变为错误，两次：在第一个错误时停止执行/g' \
+-e 's/unbuffer output, ignore interrupts/无缓冲输出，忽略中断/g' \
+-e 's/define NAME as having VALUE, or empty/将 NAME 定义为具有 VALUE 的值，或留空/g' \
+-e 's/append DIRECTORY to include path/将 DIRECTORY 添加到包含路径/g' \
+-e 's/generate.*lines/生成/g' \
+-e 's/undefine NAME/取消定义 NAME/g' \
+-e 's/override.*to re-enable GNU extensions/覆盖.*以重新启用 GNU 扩展/g' \
+-e 's/suppress all GNU extensions/抑制所有 GNU 扩展/g' \
+-e 's/set symbol lookup hash table size/设置符号查找哈希表大小/g' \
+-e 's/change nesting limit.*for unlimited/更改嵌套限制，0 表示无限制/g' \
+-e 's/produce a frozen state on FILE at end/在结束时生成 FILE 的冻结状态/g' \
+-e 's/reload a frozen state from FILE at start/在开始时从 FILE 重新加载冻结状态/g' \
+-e 's/set debug level/设置调试级别/g' \
+-e 's/no FLAGS implies/不指定 FLAGS 则表示/g' \
+-e 's/redirect debug and trace output to FILE/将调试和跟踪输出重定向到 FILE/g' \
+-e 's/default stderr, discard if empty string/默认 stderr，如果为空字符串则丢弃/g' \
+-e 's/restrict macro tracing size/限制宏追踪大小/g' \
+-e 's/trace NAME when it is defined/在 NAME 被定义时追踪它/g' \
+-e 's/FLAGS is any of/FLAGS 可以是以下任意值/g' \
+-e 's/show actual arguments/显示实际参数/g' \
+-e 's/show before collect, after collect and after call/显示收集前、收集后和调用后/g' \
+-e 's/show expansion/显示展开/g' \
+-e 's/say current input file name/显示当前输入文件名/g' \
+-e 's/show changes in input files/显示输入文件的变化/g' \
+-e 's/say current input line number/显示当前输入行号/g' \
+-e 's/show results of path searches/显示路径搜索的结果/g' \
+-e 's/quote values as necessary, with a or e flag/根据需要引用值，使用 a 或 e 标志/g' \
+-e 's/trace for all macro calls, not only traceon/追踪所有宏调用，而不仅仅是 traceon/g' \
+-e 's/add a unique macro call id, useful with c flag/添加唯一的宏调用 ID，与 c 标志一起使用很有用/g' \
+-e 's/shorthand for all of the above flags/上述所有标志的简写/g' \
+-e 's/of directories included after any specified by/的目录，将在/g' \
+-e 's/Exit status is 0 for success, 1 for failure/退出状态 0 表示成功，1 表示失败/g' \
+-e 's/or whatever value was passed to the/或者传递给/g' \
+-e 's/macro/宏/g' \
+-e 's/compile a converter table/编译转换器表/g' \
+-e 's/converts the ICU converter table/将 ICU 转换器表/g' \
+-e 's/into a binary file/转换为二进制文件/g' \
+-e 's/The binary file has the same base name as/二进制文件的基本名称与/g' \
+-e 's/but has a/但具有/g' \
+-e 's/extension \(instead of the typical/扩展名（而不是典型的/g' \
+-e 's/of the.*file\)/文件的/g' \
+-e 's/This binary file can then be read directly by/然后，该二进制文件可以直接由/g' \
+-e 's/or used by/读取，或者由/g' \
+-e 's/for incorporation into a larger archive or library/用于合并到更大的存档或库中/g' \
+-e 's/must be in the ICU ucm/必须采用 ICU ucm/g' \
+-e 's/format in order to be understood by/格式才能被/g' \
+-e 's/The ICU ucm format is similar to the/ICU ucm 格式类似于/g' \
+-e 's/files/Comments in the/文件。/g' \
+-e 's/are handled as follows/按如下方式处理/g' \
+-e 's/If a comment.*that is after some text does contain/如果注释.*在某个文本之后并且包含/g' \
+-e 's/the fallback indicator/回退指示符/g' \
+-e 's/then only the text starting with/则只有从/g' \
+-e 's/sign, and ending before the/sign 开始并在/g' \
+-e 's/sign, is ignored/sign 之前的文本会被忽略/g' \
+-e 's/Otherwise, or if the comment is the first thing on the line/否则，或者如果注释是行中的第一项/g' \
+-e 's/the comment runs up to the end of the line/注释将延伸到行尾/g' \
+-e 's/This special handling of comments is to accommodate/这种对注释的特殊处理是为了适应/g' \
+-e 's/the practice of putting fallback information in comments/将回退信息放在注释中的做法/g' \
+-e 's/Note that new converters will be automatically found by/请注意，新的转换器将在安装到 ICU 数据目录后自动被/g' \
+-e 's/after their installation in.*data directory/发现/g' \
+-e 's/They do not need to be listed in the/它们不需要列在/g' \
+-e 's/converters aliases file in order to be available to/转换器别名文件中即可供/g' \
+-e 's/applications using/的应用程序使用/g' \
+-e 's/They do need to be listed there if one wants to give them aliases, or tags, though/但如果想要给它们设置别名或标签，则需要在那里列出它们/g' \
+-e 's/Print help about usage and exit/打印使用帮助并退出/g' \
+-e 's/Include a copyright notice in the binary data/在二进制数据中包含版权声明/g' \
+-e 's/Display extra informative messages during execution/在执行期间显示额外的信息消息/g' \
+-e 's/Set the destination directory to/将目标目录设置为/g' \
+-e 's/The default destination directory is specified by the environment variable/默认目标目录由环境变量/g' \
+-e 's/指定/g' \
+-e 's/If an existing converter table is changed and recompiled using/如果使用/g' \
+-e 's/the resulting binary file must be packaged in the same way that it was packaged initially/更改并重新编译现有的转换器表，生成的二进制文件必须按最初打包的方式进行打包/g' \
+-e 's/For example, if converters were grouped together in an archive or a library with/例如，如果转换器通过/g' \
+-e 's/then the archive or library must be rebuilt with the new binary file/分组到存档或库中，那么必须使用新的二进制文件重建存档或库/g' \
+-e 's/A standalone binary converter file will not take precedence over a packaged one/独立的二进制转换器文件不会优先于打包的转换器文件/g' \
+-e 's/Specifies the directory containing ICU data/指定包含 ICU 数据的目录/g' \
+-e 's/Some tools in ICU depend on the presence of the trailing slash/ICU 中的某些工具依赖于尾部斜杠的存在/g' \
+-e 's/It is thus important to make sure that it is present if/因此，如果设置了/g' \
+-e 's/is set/则确保其存在非常重要/g' \
+-e 's/"MANPAGE"/"手册"/g' \
+-e 's/package build templating utility/软件包构建模板工具/g' \
+-e 's/Description of the command/命令的描述/g' \
+-e 's/transparent background application with a built in mangohud/具有内置 MangoHud 的透明背景应用程序/g' \
+-e 's/transparent background opengl application/透明背景 OpenGL 应用程序/g' \
+-e 's/It.*designed to be run inside a gamescope instance/它设计用于在 gamescope 实例中运行/g' \
+-e 's/which will display mangoapp ontop of gamescopes output/这将在 gamescope 输出上方显示 mangoapp/g' \
+-e 's/It also takes frame information from gamescope/它还会从 gamescope 获取帧信息/g' \
+-e 's/The purpose of this is to/其目的是/g' \
+-e 's/make MangoHud compatible with any application/使 MangoHud 与任何应用程序兼容/g' \
+-e 's/or at least any application that gamescope can run/或者至少是 gamescope 可以运行的所有应用程序/g' \
+-e 's/This solves issues with some OpenGL games and certain ports that have stdc++ issues/这解决了某些 OpenGL 游戏和某些存在 stdc++ 问题的移植版本的问题/g' \
+-e 's/as it.*no longer directly injected into the game/因为它不再直接注入到游戏中/g' \
+-e 's/Create a script.*containing the app you want to run/创建一个包含您要运行的应用程序的脚本/g' \
+-e 's/like so/如下所示/g' \
+-e 's/And then run it with/然后使用/g' \
+-e 's/MangoHud development takes place at/MangoHud 开发位于/g' \
+-e 's/Benchmarks created with MangoHud can be uploaded to/使用 MangoHud 创建的基准测试可以上传到/g' \
+-e 's/can be enabled for Vulkan applications by setting/可以通过设置/g' \
+-e 's/as environment variable/作为环境变量来为 Vulkan 应用程序启用/g' \
+-e 's/To load MangoHud for any application, including OpenGL applications/要为任何应用程序（包括 OpenGL 应用程序）加载 MangoHud/g' \
+-e 's/the.*executable can be used/可以使用/g' \
+-e 's/It preloads a library via ld into the application/它通过 ld 将库预加载到应用程序中/g' \
+-e 's/some OpenGL applications may also need dlsym hooking/某些 OpenGL 应用程序可能还需要 dlsym 挂钩/g' \
+-e 's/This can be done by passing option/这可以通过传递选项/g' \
+-e 's/or by setting.*as environment variable/或通过设置.*作为环境变量来实现/g' \
+-e 's/MangoHud comes with a config file which can be used to set configuration options globally or per application/MangoHud 附带一个配置文件，可用于全局或按应用程序设置配置选项/g' \
+-e 's/The priorities of different config files are/不同配置文件的优先级为/g' \
+-e 's/An example config file is located in/示例配置文件位于/g' \
+-e 's/containing all available options/其中包含所有可用选项/g' \
+-e 's/A custom config file location can also be specified with the/也可以通过/g' \
+-e 's/environment variable/环境变量指定自定义配置文件位置/g' \
+-e 's/Config options can also be set with the/也可以通过/g' \
+-e 's/This takes priority over any config file/这优先于任何配置文件/g' \
+-e 's/set your launch option to/将启动选项设置为/g' \
+-e 's/add.*to the Command prefix setting/将.*添加到命令前缀设置/g' \
+-e 's/OpenGL:/OpenGL：/g' \
+-e 's/Vulkan:/Vulkan：/g' \
+-e 's/Steam:/Steam：/g' \
+-e 's/Lutris:/Lutris：/g' \
+-e 's/Custom config options:/自定义配置选项：/g' \
+-e 's/RDMA CM multicast setup and simple data transfer test/RDMA CM 多播设置和简单数据传输测试/g' \
+-e 's/Establishes a set of RDMA multicast communication paths between nodes/在节点之间建立一组 RDMA 多播通信路径/g' \
+-e 's/using the librdmacm/使用 librdmacm/g' \
+-e 's/optionally transfers datagrams to receiving nodes/可选地将数据报传输到接收节点/g' \
+-e 's/then tears down the communication/然后拆除通信/g' \
+-e 's/IP multicast address to join/要加入的 IP 多播地址/g' \
+-e 's/RDMA transport specific multicast address to join/要加入的 RDMA 传输特定多播地址/g' \
+-e 's/Send datagrams to the multicast group/向多播组发送数据报/g' \
+-e 's/The local network address to bind to/要绑定的本地网络地址/g' \
+-e 's/The number of QPs to join the multicast group/加入多播组的 QP 数量/g' \
+-e 's/The number of messages to transfer over each connection/通过每个连接传输的消息数量/g' \
+-e 's/The size of each message transferred, in bytes/每条传输消息的大小（字节）/g' \
+-e 's/This value must be smaller than the MTU of the underlying RDMA transport, or an error will occur/此值必须小于底层 RDMA 传输的 MTU，否则将发生错误/g' \
+-e 's/Join the multicast group as a send-only full-member/作为仅发送的正式成员加入多播组/g' \
+-e 's/Otherwise the group is joined as a full-member/否则作为正式成员加入组/g' \
+-e 's/Prevent multicast message loopback/防止多播消息环回/g' \
+-e 's/Other receivers on the local system will not receive the multicast messages/本地系统上的其他接收者将不会收到多播消息/g' \
+-e 's/Otherwise all multicast messages are also send to the host they originated from and local listeners.*will receive the messages/否则，所有多播消息也会发送到它们所来自的主机，本地监听者.*将收到消息/g' \
+-e 's/The port space of the datagram communication/数据报通信的端口空间/g' \
+-e 's/May be either the RDMA UDP.*or IPoIB.*port space/可以是 RDMA UDP.*或 IPoIB.*端口空间/g' \
+-e 's/Basic usage is to start/基本用法是在服务器系统上启动/g' \
+-e 's/on a server system/then run/，然后在客户端系统上运行/g' \
+-e 's/Unique Infiniband SA assigned multicast GIDs can be retrieved by invoking.*with a zero MGID or IP address/可以通过使用零 MGID 或 IP 地址调用.*来获取唯一的 Infiniband SA 分配的多播 GID/g' \
+-e 's/The assigned address will be displayed to allow.*clients to join the created group/分配的地址将显示出来，以便.*客户端加入创建的组/g' \
+-e 's/Because this test maps RDMA resources to userspace, users must ensure that they have available system resources and permissions/由于此测试将 RDMA 资源映射到用户空间，用户必须确保拥有可用的系统资源和权限/g' \
+-e 's/See the.*README file for additional details/有关更多详细信息，请参阅.*README 文件/g' \
+-e 's/convert Markdown to HTML/将 Markdown 转换为 HTML/g' \
+-e 's/Write output to/将输出写入/g' \
+-e 's/instead of/而不是/g' \
+-e 's/Generate full HTML document, including header/生成完整的 HTML 文档，包括头部/g' \
+-e 's/Measure time of input parsing/测量输入解析时间/g' \
+-e 's/Display help and exit/显示帮助并退出/g' \
+-e 's/Display version and exit/显示版本并退出/g' \
+-e 's/Collapse non-trivial whitespace/折叠非平凡的空白/g' \
+-e 's/Do not translate entities/不翻译实体/g' \
+-e 's/Allow ATX headers without delimiting space/允许没有分隔空格的 ATX 标题/g' \
+-e 's/Allow URL autolinks without.*delimiters/允许没有.*分隔符的 URL 自动链接/g' \
+-e 's/Allow WWW autolinks without any scheme/允许没有任何方案的 WWW 自动链接/g' \
+-e 's/Allow e-mail autolinks without/允许没有/g' \
+-e 's/Enable all 3 of the above permissive autolinks options/启用上述所有 3 个宽松自动链接选项/g' \
+-e 's/Force all soft breaks to act as hard breaks/强制所有软换行作为硬换行/g' \
+-e 's/Disable indented code blocks/禁用缩进代码块/g' \
+-e 's/Disable raw HTML blocks/禁用原始 HTML 块/g' \
+-e 's/Disable raw HTML spans/禁用原始 HTML 范围/g' \
+-e 's/Enable tables/启用表格/g' \
+-e 's/Enable strikethrough spans/启用删除线/g' \
+-e 's/Enable task lists/启用任务列表/g' \
+-e 's/LMDB environment copy tool/LMDB 环境复制工具/g' \
+-e 's/copies an LMDB environment/复制 LMDB 环境/g' \
+-e 's/The environment can be copied regardless of whether it is currently in use/无论环境是否正在使用中，都可以复制它/g' \
+-e 's/No lockfile is created, since it gets recreated at need/不创建锁文件，因为它在需要时会重新创建/g' \
+-e 's/If.*is specified it must be the path of an empty directory for storing the backup/如果指定了.*，则它必须是一个用于存储备份的空目录的路径/g' \
+-e 's/Otherwise, the backup will be written to stdout/否则，备份将写入 stdout/g' \
+-e 's/Write the library version number to the standard output, and exit/将库版本号写入标准输出并退出/g' \
+-e 's/Compact while copying/复制时压缩/g' \
+-e 's/Only current data pages will be copied/只复制当前数据页/g' \
+-e 's/freed or unused pages will be omitted from the copy/已释放或未使用的页面将从副本中省略/g' \
+-e 's/This option will slow down the backup process as it is more CPU-intensive/此选项会减慢备份过程，因为它更消耗 CPU/g' \
+-e 's/Currently it fails if the environment has suffered a page leak/当前，如果环境发生页面泄漏，它会失败/g' \
+-e 's/Open LDMB environment.*which do not use subdirectories/打开不使用子目录的 LMDB 环境/g' \
+-e 's/Exit status is zero if no errors occur/如果没有错误发生，退出状态为零/g' \
+-e 's/Errors result in a non-zero exit status and a diagnostic message being written to standard error/错误会导致非零退出状态并将诊断消息写入标准错误/g' \
+-e 's/This utility can trigger significant file size growth if run in parallel with write transactions/如果与写事务并行运行，此实用程序可能会触发显著的文件大小增长/g' \
+-e 's/because pages which they free during copying cannot be reused until the copy is done/因为在复制期间释放的页面在复制完成之前无法重用/g' \
+"$INPUT" > "$OUTPUT"
